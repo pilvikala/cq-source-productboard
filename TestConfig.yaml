@@ -3,15 +3,16 @@ spec:
   name: "productboard"
   registry: "grpc"
   path: "localhost:7777"
-  tables: ["pb_notes"]
+  tables: ["pb_companies", "pb_notes"]
   destinations: ["sqlite"]
   spec:
     api_token: "${PB_API_KEY}"
 ---
 kind: destination
 spec:
+  send_sync_summary: true
   name: sqlite
   path: cloudquery/sqlite
-  version: "v2.4.11"
+  version: "v2.13.1"
   spec:
     connection_string: ./db.sqlite
