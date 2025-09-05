@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "example"
+name = "cq-source-productboard"
 version = "0.1.0"
 description = ""
-authors = ["Plaintextnerds <tim@plaintextnerds.com>"]
+authors = ["Pilvikala"]
 readme = "README.md"
 packages = [{include = "plugin"}]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.14"
-cloudquery-plugin-sdk = "^0.1.12"
+python = ">=3.11"
+cloudquery-plugin-sdk = "0.1.47"
 pydantic = "^2.4"
-pyarrow = "^21.0.0"
+pyarrow = "^19.0.1"
 requests = "^2.32.2"
 
 [tool.poetry.scripts]

@@ -1,12 +1,12 @@
 kind: source
 spec:
-  name: "comics"
+  name: "productboard"
   registry: "grpc"
   path: "localhost:7777"
-  tables: ['*']
+  tables: ["pb_notes"]
   destinations: ["sqlite"]
   spec:
-    base_url: https://xkcd.com
+    api_token: "${PB_API_KEY}"
 ---
 kind: destination
 spec:

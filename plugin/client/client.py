@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from cloudquery.sdk.scheduler import Client as ClientABC
 
-from plugin.example.client import ExampleClient
+from plugin.productboard.client import ProductBoardClient
 
 DEFAULT_CONCURRENCY = 100
 DEFAULT_QUEUE_SIZE = 10000
@@ -9,8 +9,7 @@ DEFAULT_QUEUE_SIZE = 10000
 
 @dataclass
 class Spec:
-    access_token: str
-    base_url: str = field(default="https://api.example.com")
+    api_token: str
     concurrency: int = field(default=DEFAULT_CONCURRENCY)
     queue_size: int = field(default=DEFAULT_QUEUE_SIZE)
 
@@ -23,11 +22,11 @@ class Spec:
 class Client(ClientABC):
     def __init__(self, spec: Spec) -> None:
         self._spec = spec
-        self._client = ExampleClient(spec.access_token, spec.base_url)
+        self._client = ProductBoardClient(spec.api_token)
 
     def id(self):
-        return "example"
+        return "productboard"
 
     @property
-    def client(self) -> ExampleClient:
+    def client(self) -> ProductBoardClient:
         return self._client

@@ -1,3 +1,7 @@
 venv
 __pycache__
 dist
+.cq
+.env
+db.sqlite
+cloudquery.log
