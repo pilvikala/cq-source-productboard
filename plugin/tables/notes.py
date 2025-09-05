@@ -28,11 +28,11 @@ class Notes(Table):
                 Column("followers", JSONType()),
                 Column("state", pa.string()),
                 Column("source", JSONType()),
-                Column("tags", pa.string()),
+                Column("tags", JSONType()),
                 Column("features", JSONType()),
                 Column("created_at", pa.timestamp(unit="s")),
                 Column("updated_at", pa.timestamp(unit="s")),
-                Column("createdBy", JSONType()),
+                Column("created_by", JSONType()),
             ],
         )
         self._resolver = NoteResolver(table=self)
@@ -48,6 +48,18 @@ def get_note(note_response: dict[str, Any]) -> dict[str, Any]:
         "title": note_response["title"],
         "content": note_response["content"],
         "display_url": note_response["displayUrl"],
+        "external_display_url": note_response["externalDisplayUrl"],
+        "company": note_response["company"],
+        "user": note_response["user"],
+        "owner": note_response["owner"],
+        "followers": note_response["followers"],
+        "state": note_response["state"],
+        "source": note_response["source"],
+        "tags": note_response["tags"],
+        "features": note_response["features"],
+        "created_at": note_response["createdAt"],
+        "updated_at": note_response["updatedAt"],
+        "created_by": note_response["createdBy"],
     }
 
 class NoteResolver(TableResolver):
