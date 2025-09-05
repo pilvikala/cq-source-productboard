@@ -7,7 +7,7 @@ from cloudquery.sdk import plugin
 from cloudquery.sdk import schema
 from cloudquery.sdk.scheduler import Scheduler, TableResolver
 
-from plugin.tables import Notes, Companies
+from plugin.tables import Notes, Companies, Users, Features, Components
 from plugin.client import Client, Spec
 
 PLUGIN_NAME = "productboard"
@@ -44,7 +44,10 @@ class ProductBoardPlugin(plugin.Plugin):
     def get_tables(self, options: plugin.TableOptions) -> List[plugin.Table]:
         all_tables: List[plugin.Table] = [
             Notes(),
-            Companies()
+            Companies(),
+            Users(),
+            Features(),
+            Components()
         ]
 
         # set parent table relationships

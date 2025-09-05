@@ -3,7 +3,12 @@ spec:
   name: "productboard"
   registry: "grpc"
   path: "localhost:7777"
-  tables: ["pb_companies", "pb_notes"]
+  tables:
+    - pb_companies
+    - pb_notes
+    - pb_users
+    - pb_features
+    - pb_components
   destinations: ["sqlite"]
   spec:
     api_token: "${PB_API_KEY}"
