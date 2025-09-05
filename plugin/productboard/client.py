@@ -26,19 +26,17 @@ class ProductBoardClient:
         json_response = response.json()
         cursor = self.get_cursor(json_response)
         return json_response["data"], cursor
+
+    def iterator(self, path: str, page_cursor: str = None) -> Generator[Dict[str, Any], None, None]:
+        while True:
+            page, page_cursor = self.get_page(path, page_cursor)
+            for item in page:
+                yield item
+            if page_cursor is None:
+                break
     
     def company_iterator(self, page_cursor: str = None) -> Generator[Dict[str, Any], None, None]:
-        while True:
-            page, page_cursor = self.get_page('companies',page_cursor)
-            for company in page:
-                yield company
-            if page_cursor is None:
-                break
+        return self.iterator('companies', page_cursor)
 
     def note_iterator(self, page_cursor: str = None) -> Generator[Dict[str, Any], None, None]:
-        while True:
-            page, page_cursor = self.get_page('notes', page_cursor)
-            for note in page:
-                yield note
-            if page_cursor is None:
-                break
+        return self.iterator('notes', page_cursor)
