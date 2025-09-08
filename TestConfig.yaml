@@ -10,6 +10,7 @@ spec:
     - pb_features
     - pb_components
     - pb_products
+    - pb_feature_statuses
   destinations: ["sqlite"]
   spec:
     api_token: "${PB_API_KEY}"

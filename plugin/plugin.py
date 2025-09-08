@@ -7,7 +7,7 @@ from cloudquery.sdk import plugin
 from cloudquery.sdk import schema
 from cloudquery.sdk.scheduler import Scheduler, TableResolver
 
-from plugin.tables import Notes, Companies, Users, Features, Components, Products
+from plugin.tables import Notes, Companies, Users, Features, Components, Products, FeatureStatuses
 from plugin.client import Client, Spec
 
 PLUGIN_NAME = "productboard"
@@ -48,7 +48,8 @@ class ProductBoardPlugin(plugin.Plugin):
             Users(),
             Features(),
             Components(),
-            Products()
+            Products(),
+            FeatureStatuses()
         ]
 
         # set parent table relationships

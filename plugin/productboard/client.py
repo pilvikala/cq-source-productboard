@@ -72,3 +72,6 @@ class ProductBoardClient:
     
     def product_iterator(self) -> Generator[Dict[str, Any], None, None]:
         return self.url_iterator('products')
+
+    def feature_status_iterator(self) -> Generator[Dict[str, Any], None, None]:
+        return self.url_iterator('feature-statuses')
