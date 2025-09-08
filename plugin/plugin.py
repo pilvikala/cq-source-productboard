@@ -12,7 +12,7 @@ from plugin.client import Client, Spec
 
 PLUGIN_NAME = "productboard"
 PLUGIN_VERSION = "0.0.1"
-TEAM_NAME = "cloudquery"
+TEAM_NAME = "mbr-cq"
 PLUGIN_KIND = "source"
 
 
