@@ -69,3 +69,6 @@ class ProductBoardClient:
                 yield item
             if next_url is None:
                 break
+    
+    def product_iterator(self) -> Generator[Dict[str, Any], None, None]:
+        return self.url_iterator('products')
