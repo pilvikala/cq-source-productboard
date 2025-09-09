@@ -17,7 +17,8 @@ class Products(Table):
             name="pb_products",
             title="ProductBoard Products",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("name", pa.string()),
                 Column("description", pa.string()),
                 Column("links", JSONType()),
@@ -35,6 +36,7 @@ class Products(Table):
 
 def get_product(product: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(product["id"]),
         "id": product["id"],
         "name": product["name"],
         "description": product["description"],

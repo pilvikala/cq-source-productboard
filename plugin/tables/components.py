@@ -16,8 +16,9 @@ class Components(Table):
         super().__init__(
             name="pb_components",
             title="ProductBoard Components",
-            columns=[
-                Column("id", UUIDType(), primary_key=True),
+            columns=[ 
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("name", pa.string()),
                 Column("description", pa.string()),
                 Column("links", JSONType()),
@@ -36,6 +37,7 @@ class Components(Table):
 
 def get_component(component: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(component["id"]),
         "id": component["id"],
         "name": component["name"],
         "description": component["description"],

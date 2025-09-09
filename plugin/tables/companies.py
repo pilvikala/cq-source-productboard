@@ -17,7 +17,8 @@ class Companies(Table):
             name="pb_companies",
             title="ProductBoard Companies",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("name", pa.string()),
                 Column("domain", pa.string()),
                 Column("description", pa.string()),
@@ -34,6 +35,7 @@ class Companies(Table):
 
 def get_company(company: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(company["id"]),
         "id": company["id"],
         "name": company["name"],
         "domain": company["domain"],

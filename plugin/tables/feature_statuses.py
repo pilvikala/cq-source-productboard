@@ -17,7 +17,8 @@ class FeatureStatuses(Table):
             name="pb_feature_statuses",
             title="ProductBoard Feature Statuses",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("name", pa.string()),
                 Column("completed", pa.bool_()),
             ],
@@ -31,6 +32,7 @@ class FeatureStatuses(Table):
 
 def get_feature_status(feature_status: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(feature_status["id"]),
         "id": feature_status["id"],
         "name": feature_status["name"],
         "completed": feature_status["completed"],

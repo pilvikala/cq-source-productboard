@@ -17,7 +17,8 @@ class Features(Table):
             name="pb_features",
             title="ProductBoard Features",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("name", pa.string()),
                 Column("description", pa.string()),
                 Column("type", pa.string()),
@@ -41,6 +42,7 @@ class Features(Table):
 
 def get_feature(feature: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(feature["id"]),
         "id": feature["id"],
         "name": feature["name"],
         "description": feature["description"],

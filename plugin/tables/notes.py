@@ -17,7 +17,8 @@ class Notes(Table):
             name="pb_notes",
             title="ProductBoard Notes",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("title", pa.string()),
                 Column("content", pa.string()),
                 Column("display_url", pa.string()),
@@ -44,6 +45,7 @@ class Notes(Table):
 
 def get_note(note_response: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(note_response["id"]),
         "id": note_response["id"],
         "title": note_response["title"],
         "content": note_response["content"],

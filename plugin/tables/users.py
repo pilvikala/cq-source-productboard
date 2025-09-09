@@ -17,7 +17,8 @@ class Users(Table):
             name="pb_users",
             title="ProductBoard Users",
             columns=[
-                Column("id", UUIDType(), primary_key=True),
+                Column("_cq_id", UUIDType(), primary_key=True),
+                Column("id", UUIDType()),
                 Column("email", pa.string()),
                 Column("external_id", pa.string()),
                 Column("name", pa.string()),
@@ -32,6 +33,7 @@ class Users(Table):
 
 def get_user(user: dict[str, Any]) -> dict[str, Any]:
     return {
+        "_cq_id": str(user["id"]),
         "id": user["id"],
         "email": user["email"],
         "name": user["name"],
